@@ -7,6 +7,13 @@ namespace action {
 
 class LedAction: public IAction {
 public:
+    uint8_t i2cBus = 0;
+    uint8_t ledIndex = 0;
+
+    LedAction(uint8_t i2cBus, uint8_t ledIndex);
+
+    void playAtTime(int64_t time);
+
     struct RgbColor {
         uint8_t r = 0;
         uint8_t g = 0;
@@ -20,13 +27,6 @@ public:
             return r == other.r && g == other.g && b == other.b;
         }
     };
-
-    LedAction(uint8_t i2cBus, uint8_t ledIndex);
-
-    void playAtTime(int64_t time);
-
-    uint8_t i2cBus = 0;
-    uint8_t ledIndex = 0;
 
     RgbColor startColor = {0, 0, 0};
     RgbColor endColor = {0, 0, 0};

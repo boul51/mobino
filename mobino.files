@@ -4,3 +4,5 @@ src/iaction.h
 src/iaction.cpp
 src/ledaction.h
 src/ledaction.cpp
+src/motoraction.h
+src/motoraction.cpp

@@ -37,5 +37,7 @@ int main()
 
     Serial.begin(115200);
     Serial.println("Starting application");
+
+    Serial.flush();
 }
 

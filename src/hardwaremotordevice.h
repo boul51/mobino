@@ -17,7 +17,9 @@ public:
     void initDevice() override;
 
 private:
+#ifndef PC_BUILD
     Servo* m_servo = nullptr;
+#endif
 };
 
 }

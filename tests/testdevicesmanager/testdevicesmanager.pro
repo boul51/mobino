@@ -4,6 +4,8 @@ QT -= gui
 CONFIG += c++11 console
 CONFIG -= app_bundle
 
+DEFINES += PC_BUILD
+
 INCLUDEPATH += \
         ../../src/
 

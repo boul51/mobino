@@ -1,0 +1,4 @@
+all: mobino
+
+mobino: main.o
+

@@ -11,5 +11,6 @@ SOURCES += \
         testactions.cpp \
         ../../src/iaction.cpp \
         ../../src/ledaction.cpp \
+        ../../src/motoraction.cpp \
 
 TEMPLATE = app

@@ -2,6 +2,7 @@
 #include <QtTest/QtTest>
 
 #include "ledaction.h"
+#include "motoraction.h"
 
 class TestActions: public QObject {
     Q_OBJECT
@@ -13,6 +14,7 @@ private slots:
     void testInterpolateAfterEnd();
     void testInterpolateZeroDuration();
     void testInterpolateColor();
+    void testInterpolateMotorAngle();
 };
 
 void TestActions::testInterpolate()
@@ -102,6 +104,21 @@ void TestActions::testInterpolateColor()
     action::LedAction::RgbColor expectedColor{50, 100, 150};
 
     QVERIFY2(expectedColor == l.currentColor, "Wrong color after interpolation");
+}
+
+void TestActions::testInterpolateMotorAngle()
+{
+    action::MotorAction m(0);
+
+    m.startAngle = 60;
+    m.endAngle = 80;
+
+    m.startTime = 0;
+    m.duration = 1000;
+
+    m.playAtTime(500);
+
+    QVERIFY2(m.currentAngle == 70, "Wrong angle after interpolation");
 }
 
 QTEST_MAIN(TestActions)

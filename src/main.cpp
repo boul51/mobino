@@ -24,6 +24,8 @@ ________________________________________________________________________________
 #include "array.h"
 #include "ledaction.h"
 
+#include "devicesmanager.h"
+
 /*
 #define     LED_PIN     13
 pinMode(LED_PIN, OUTPUT);
@@ -37,6 +39,8 @@ int main()
 
     Serial.begin(115200);
     Serial.println("Starting application");
+
+    device::DevicesManager devicesManager;
 
     Serial.flush();
 }

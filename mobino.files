@@ -6,3 +6,12 @@ src/ledaction.h
 src/ledaction.cpp
 src/motoraction.h
 src/motoraction.cpp
+src/ihwdevice.h
+src/hwmotordevice.h
+src/hwmotordevice.cpp
+src/hwleddevice.h
+src/hwleddevice.cpp
+src/devicesmanager.h
+src/devicesmanager.cpp
+src/ilogicaldevice.h
+src/ilogicaldevice.cpp

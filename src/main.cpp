@@ -23,6 +23,8 @@ ________________________________________________________________________________
 
 #include "array.h"
 #include "ledaction.h"
+#include "logicalleddevice.h"
+#include "logicalmotordevice.h"
 
 #include "devicesmanager.h"
 
@@ -41,6 +43,15 @@ int main()
     Serial.println("Starting application");
 
     device::DevicesManager devicesManager;
+
+    devicesManager.addLogicalDevice(new device::LogicalLedDevice(0, 0));
+    devicesManager.addLogicalDevice(new device::LogicalLedDevice(0, 1));
+    devicesManager.addLogicalDevice(new device::LogicalLedDevice(1, 0));
+    devicesManager.addLogicalDevice(new device::LogicalMotorDevice(10));
+    devicesManager.addLogicalDevice(new device::LogicalMotorDevice(11));
+
+    Serial.print("hw devices count: ");
+    Serial.println(devicesManager.hardwareDevices().length());
 
     Serial.flush();
 }

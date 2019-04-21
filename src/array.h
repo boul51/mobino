@@ -1,6 +1,8 @@
 #ifndef ARRAY_H
 #define ARRAY_H
 
+#include <string.h>
+
 template <class T>
 class Array {
 public:
@@ -30,12 +32,14 @@ public:
         m_length--;
     }
 
-    int length() {
+    int length() const {
         return m_length;
     }
+
     T at(int i) {
         return m_values[i];
     }
+
     ~Array() {
         if (m_values)
             delete [] m_values;

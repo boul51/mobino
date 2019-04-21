@@ -5,15 +5,21 @@
 
 namespace device {
 
-struct IHWDevice;
+class IHardwareDevice;
 class ILogicalDevice;
 
 class DevicesManager {
 public:
     void addLogicalDevice(ILogicalDevice* logicalDevice);
+    Array<ILogicalDevice*>& logicalDevices() { return m_logicalDevices; }
+    Array<IHardwareDevice*>& hardwareDevices() { return m_hardwareDevices; }
+    void updateOutputsFromDevices();
+    // public for testing purpose
+    bool logicalAndHardwareDevicesMatch(ILogicalDevice* logicalDevice, IHardwareDevice* hardwareDevice);
 
 private:
-    Array<IHWDevice*>m_hardwareDevices;
+    Array<ILogicalDevice*> m_logicalDevices;
+    Array<IHardwareDevice*> m_hardwareDevices;
 };
 
 } // namespace device

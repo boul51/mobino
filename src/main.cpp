@@ -40,4 +40,3 @@ int main()
 
     Serial.flush();
 }
-

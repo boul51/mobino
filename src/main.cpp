@@ -44,14 +44,14 @@ int main()
 
     device::DevicesManager devicesManager;
 
-    devicesManager.addLogicalDevice(new device::LogicalLedDevice(0, 0));
-    devicesManager.addLogicalDevice(new device::LogicalLedDevice(0, 1));
-    devicesManager.addLogicalDevice(new device::LogicalLedDevice(1, 0));
+    // Add devices
+    devicesManager.addLogicalDevice(new device::LogicalLedDevice(6, 0));
+    devicesManager.addLogicalDevice(new device::LogicalLedDevice(6, 1));
     devicesManager.addLogicalDevice(new device::LogicalMotorDevice(10));
-    devicesManager.addLogicalDevice(new device::LogicalMotorDevice(11));
 
-    Serial.print("hw devices count: ");
-    Serial.println(devicesManager.hardwareDevices().length());
+    devicesManager.initDevices();
+
+    devicesManager.updateOutputsFromDevices();
 
     Serial.flush();
 }

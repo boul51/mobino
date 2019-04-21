@@ -13,6 +13,7 @@ public:
     void addLogicalDevice(ILogicalDevice* logicalDevice);
     Array<ILogicalDevice*>& logicalDevices() { return m_logicalDevices; }
     Array<IHardwareDevice*>& hardwareDevices() { return m_hardwareDevices; }
+    void initDevices();
     void updateOutputsFromDevices();
     // public for testing purpose
     bool logicalAndHardwareDevicesMatch(ILogicalDevice* logicalDevice, IHardwareDevice* hardwareDevice);

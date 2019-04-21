@@ -14,7 +14,7 @@ public:
     int ledIndex = 0;
 
     uint8_t redValue = 0;
-    uint8_t greenValue = 0;
+    uint8_t greenValue = 10;
     uint8_t blueValue = 0;
 };
 

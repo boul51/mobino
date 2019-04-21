@@ -11,7 +11,7 @@ class LogicalMotorDevice: public ILogicalDevice {
 public:
     LogicalMotorDevice(int deviceId);
 
-    uint8_t m_angle = 90;
+    uint8_t angle = 120;
 };
 
 } // namespace device

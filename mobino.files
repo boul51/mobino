@@ -18,3 +18,7 @@ src/logicalmotordevice.h
 src/logicalmotordevice.cpp
 src/logicalleddevice.h
 src/logicalleddevice.cpp
+src/Adafruit_NeoPixel.h
+src/Adafruit_NeoPixel.cpp
+src/Servo.h
+src/Servo.cpp

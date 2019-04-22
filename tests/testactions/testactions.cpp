@@ -19,7 +19,7 @@ private slots:
 
 void TestActions::testInterpolate()
 {
-    action::LedAction l(0, 0);
+    action::LedAction l;
 
     int startValue = 10;
     int endValue = 12;
@@ -37,7 +37,7 @@ void TestActions::testInterpolate()
 
 void TestActions::testInterpolateBeforeStart()
 {
-    action::LedAction l(0, 0);
+    action::LedAction l;
 
     float startValue = 1.;
     float endValue = 2.;
@@ -55,7 +55,7 @@ void TestActions::testInterpolateBeforeStart()
 
 void TestActions::testInterpolateAfterEnd()
 {
-    action::LedAction l(0, 0);
+    action::LedAction l;
 
     float startValue = 1.;
     float endValue = 2.;
@@ -73,7 +73,7 @@ void TestActions::testInterpolateAfterEnd()
 
 void TestActions::testInterpolateZeroDuration()
 {
-    action::LedAction l(0, 0);
+    action::LedAction l;
 
     float startValue = 1.;
     float endValue = 2.;
@@ -91,7 +91,7 @@ void TestActions::testInterpolateZeroDuration()
 
 void TestActions::testInterpolateColor()
 {
-    action::LedAction l(0, 0);
+    action::LedAction l;
 
     l.startTime = 0;
     l.duration = 1000;

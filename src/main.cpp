@@ -28,6 +28,8 @@ ________________________________________________________________________________
 
 #include "devicesmanager.h"
 
+#include "sleepyshowmanager.h"
+
 /*
 #define     LED_PIN     13
 pinMode(LED_PIN, OUTPUT);
@@ -52,6 +54,10 @@ int main()
     devicesManager.initDevices();
 
     devicesManager.updateOutputsFromDevices();
+
+    show::SleepyShowManager showManager;
+
+    showManager.createTracksForDevices(devicesManager.logicalDevices());
 
     Serial.flush();
 }

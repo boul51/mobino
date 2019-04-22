@@ -7,11 +7,6 @@ namespace action {
 
 class LedAction: public IAction {
 public:
-    uint8_t i2cBus = 0;
-    uint8_t ledIndex = 0;
-
-    LedAction(uint8_t i2cBus, uint8_t ledIndex);
-
     void playAtTime(int64_t time);
 
     struct RgbColor {

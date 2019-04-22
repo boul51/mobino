@@ -18,6 +18,12 @@ src/logicalmotordevice.h
 src/logicalmotordevice.cpp
 src/logicalleddevice.h
 src/logicalleddevice.cpp
+src/ishowmanager.h
+src/ishowmanager.cpp
+src/sleepyshowmanager.h
+src/sleepyshowmanager.cpp
+src/track.h
+src/track.cpp
 src/Adafruit_NeoPixel.h
 src/Adafruit_NeoPixel.cpp
 src/Servo.h

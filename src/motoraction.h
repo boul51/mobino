@@ -7,11 +7,8 @@ namespace action {
 
 class MotorAction: public action::IAction {
 public:
-    uint8_t digitalOutput = 0;
-
-    MotorAction(int digitalOutput);
-
     void playAtTime(int64_t time);
+    void updateLogicalDevice(device::ILogicalDevice *logicalDevice) override;
 
     uint8_t startAngle = 90;
     uint8_t endAngle = 90;

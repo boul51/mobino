@@ -59,5 +59,12 @@ int main()
 
     showManager.createTracksForDevices(devicesManager.logicalDevices());
 
+    while (true) {
+        int64_t time = (int64_t)millis();
+        showManager.generateTracksActions(time);
+        showManager.playAtTime(time);
+        devicesManager.updateOutputsFromDevices();
+    }
+
     Serial.flush();
 }

@@ -9,6 +9,7 @@
 #include "track.h"
 #include "ledaction.h"
 #include "motoraction.h"
+#include "devicesmanager.h"
 
 class TestShowManager: public QObject {
     Q_OBJECT
@@ -17,6 +18,7 @@ public:
 private slots:
     void testTracksCreation();
     void testGenerateTracksActions();
+    void testLoop();
 };
 
 void TestShowManager::testTracksCreation()
@@ -40,6 +42,8 @@ void TestShowManager::testTracksCreation()
 
 void TestShowManager::testGenerateTracksActions()
 {
+    QSKIP("Skipping");
+
     show::SleepyShowManager showManager;
     device::LogicalLedDevice ledDevice10(1, 0);
 
@@ -51,6 +55,31 @@ void TestShowManager::testGenerateTracksActions()
 
     show::Track* track = showManager.tracks.at(0);
     QVERIFY2(track->actions.length() > 0, "Track has no action");
+}
+
+void TestShowManager::testLoop()
+{
+    device::DevicesManager devicesManager;
+
+    // Add devices
+    devicesManager.addLogicalDevice(new device::LogicalLedDevice(6, 0));
+    //devicesManager.addLogicalDevice(new device::LogicalLedDevice(6, 1));
+    //devicesManager.addLogicalDevice(new device::LogicalMotorDevice(10));
+
+    devicesManager.initDevices();
+
+    devicesManager.updateOutputsFromDevices();
+
+    show::SleepyShowManager showManager;
+
+    showManager.createTracksForDevices(devicesManager.logicalDevices());
+
+    for (int i = 0; i < 1000; i++) {
+        int64_t time = i;
+        showManager.generateTracksActions(time);
+        showManager.playAtTime(time);
+        devicesManager.updateOutputsFromDevices();
+    }
 }
 
 QTEST_MAIN(TestShowManager)

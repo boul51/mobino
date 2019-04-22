@@ -4,6 +4,8 @@ QT -= gui
 CONFIG += c++11 console
 CONFIG -= app_bundle
 
+DEFINES += PC_BUILD
+
 INCLUDEPATH += \
         ../../src/
 
@@ -15,6 +17,10 @@ SOURCES += \
         ../../src/sleepyshowmanager.cpp \
         ../../src/track.cpp \
         ../../src/ledaction.cpp \
+        ../../src/devicesmanager.cpp \
+        ../../src/hardwaredevicefactory.cpp \
+        ../../src/hardwareleddevice.cpp \
+        ../../src/hardwaremotordevice.cpp \
 
 HEADERS += \
         ../../src/ilogicaldevice.h \

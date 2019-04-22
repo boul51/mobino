@@ -1,6 +1,10 @@
 #include "hardwareleddevice.h"
 #include "logicalleddevice.h"
 
+#ifdef PC_BUILD
+#include <stdio.h>
+#endif
+
 namespace device {
 
 HardwareLedDevice::HardwareLedDevice(int deviceId):
@@ -8,35 +12,30 @@ HardwareLedDevice::HardwareLedDevice(int deviceId):
 {
 }
 
-#ifdef PC_BUILD
-
 void HardwareLedDevice::initDevice()
 {
-}
-
-void HardwareLedDevice::updateOutput()
-{
-}
-
-#else
-
-void HardwareLedDevice::initDevice()
-{
+#ifndef PC_BUILD
     m_strip = new Adafruit_NeoPixel(m_logicalDevices.length(), deviceId, NEO_GRB + NEO_KHZ800);
     m_strip->begin();
     m_strip->show();
+#endif
 }
 
 void HardwareLedDevice::updateOutput()
 {
     for (int i = 0; i < m_logicalDevices.length(); i++) {
         LogicalLedDevice* logicalLedDevice = static_cast<LogicalLedDevice*>(m_logicalDevices.at(i));
-        // Do the job here
-        m_strip->setPixelColor(i, logicalLedDevice->redValue, logicalLedDevice->greenValue, logicalLedDevice->blueValue);
-    }
-    m_strip->show();
-}
-
+#ifndef PC_BUILD
+        m_strip->setPixelColor(logicalLedDevice->ledIndex, logicalLedDevice->redValue, logicalLedDevice->greenValue, logicalLedDevice->blueValue);
+#else
+        fprintf(stdout, "Setting pixel color, dev id %d, pixel %d, r %d, g %d, b %d\n", logicalLedDevice->deviceId, logicalLedDevice->ledIndex,
+                logicalLedDevice->redValue, logicalLedDevice->greenValue, logicalLedDevice->blueValue);
 #endif
+    }
+
+#ifndef PC_BUILD
+    m_strip->show();
+#endif
+}
 
 } // namespace device

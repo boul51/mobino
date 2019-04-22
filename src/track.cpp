@@ -44,4 +44,14 @@ action::IAction *Track::prevActiveActionAtTime(int64_t time)
     return nullptr;
 }
 
+void Track::playAtTime(int time)
+{
+    action::IAction* activeAction = activeActionAtTime(time);
+
+    if (activeAction) {
+        activeAction->playAtTime(time);
+        activeAction->updateLogicalDevice(logicalDevice);
+    }
+}
+
 } // namespace show

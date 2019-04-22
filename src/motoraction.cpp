@@ -1,11 +1,14 @@
 #include "motoraction.h"
-
-action::MotorAction::MotorAction(int digitalOutput):
-    digitalOutput(digitalOutput)
-{
-}
+#include "logicalmotordevice.h"
 
 void action::MotorAction::playAtTime(int64_t time)
 {
     currentAngle = interpolateValue(startAngle, endAngle, startTime, duration, time);
+}
+
+void action::MotorAction::updateLogicalDevice(device::ILogicalDevice* logicalDevice)
+{
+    device::LogicalMotorDevice* logicalMotorDevice = static_cast<device::LogicalMotorDevice*>(logicalDevice);
+
+    logicalMotorDevice->angle = currentAngle;
 }

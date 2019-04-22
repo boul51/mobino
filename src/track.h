@@ -16,7 +16,8 @@ class Track {
 public:
     Track(device::ILogicalDevice* logicalDevice);
     void appendAction(action::IAction* action);
-    bool hasActiveActionAtTime(int64_t time);
+    action::IAction* activeActionAtTime(int64_t time);
+    action::IAction* prevActiveActionAtTime(int64_t time);
 
     device::ILogicalDevice* logicalDevice = nullptr;
     Array<action::IAction*> actions;

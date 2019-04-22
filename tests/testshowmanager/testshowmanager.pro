@@ -19,5 +19,6 @@ SOURCES += \
 HEADERS += \
         ../../src/ilogicaldevice.h \
         ../../src/ihardwaredevice.h \
+        ../../src/track.h \
 
 TEMPLATE = app

@@ -7,7 +7,7 @@ namespace show {
 
 class SleepyShowManager: public IShowManager {
 public:
-    void generateTracksActions(int64_t time, const Array<device::ILogicalDevice *> &devices) override;
+    void generateTracksActions(int64_t time) override;
 };
 
 } // namespace show

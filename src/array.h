@@ -26,7 +26,7 @@ public:
         if (i + 1 > m_length)
             return;
 
-        for (int iItem = i; i < m_length; i++) {
+        for (int iItem = i; iItem + 1 < m_length; iItem++) {
             memcpy(&m_values[iItem], &m_values[iItem + 1], sizeof(T));
         }
         m_length--;

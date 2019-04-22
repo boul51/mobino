@@ -1,7 +1,7 @@
 #include "motoraction.h"
 #include "logicalmotordevice.h"
 
-void action::MotorAction::playAtTime(int64_t time)
+void action::MotorAction::playAtTime(unsigned long time)
 {
     currentAngle = interpolateValue(startAngle, endAngle, startTime, duration, time);
 }

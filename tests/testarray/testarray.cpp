@@ -15,6 +15,7 @@ private slots:
     void testRemoveAt();
     void testRemoveAll();
     void testIndexOf();
+    void testRemoveWithPointers();
 };
 
 void TestArray::testSizeIsZeroBeforeAppend()
@@ -70,6 +71,15 @@ void TestArray::testRemoveAt()
 
     QVERIFY2(a.at(0) == 0, "Wrong value at index 0");
     QVERIFY2(a.at(1) == 2, "Wrong value at index 1");
+
+    a.removeAt(0);
+
+    QVERIFY2(a.length() == 1, "Wrong length after remove");
+    QVERIFY2(a.at(0) == 2, "Wrong value at index 0");
+
+    a.removeAt(0);
+
+    QVERIFY2(a.length() == 0, "Wrong length after remove");
 }
 
 void TestArray::testRemoveAll()
@@ -98,6 +108,39 @@ void TestArray::testIndexOf()
     QVERIFY2(a.indexOf(3) == 1,  "indexOf returned wrong value");
     QVERIFY2(a.indexOf(4) == 2,  "indexOf returned wrong value");
     QVERIFY2(a.indexOf(0) == -1, "indexOf returned wrong value");
+}
+
+void TestArray::testRemoveWithPointers()
+{
+    Array<int*>a;
+
+    int *p0 = new int(0);
+    int *p1 = new int(1);
+    int *p2 = new int(2);
+
+    a.append(p0);
+    a.append(p1);
+    a.append(p2);
+
+    int* p0fromA = a.at(0);
+
+    QVERIFY2(p0 == p0fromA, "Read back wrong pointer");
+
+    a.removeAt(0);
+    int* p1fromA = a.at(0);
+
+    QVERIFY2(p1 == p1fromA, "Read back wrong pointer");
+
+    a.removeAt(0);
+    int* p2fromA = a.at(0);
+
+    QVERIFY2(p2 == p2fromA, "Read back wrong pointer");
+
+    a.removeAt(0);
+
+    delete p0;
+    delete p1;
+    delete p2;
 }
 
 QTEST_MAIN(TestArray)

@@ -17,6 +17,7 @@ SOURCES += \
         ../../src/sleepyshowmanager.cpp \
         ../../src/track.cpp \
         ../../src/ledaction.cpp \
+        ../../src/motoraction.cpp \
         ../../src/devicesmanager.cpp \
         ../../src/hardwaredevicefactory.cpp \
         ../../src/hardwareleddevice.cpp \

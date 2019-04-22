@@ -32,6 +32,14 @@ public:
         m_length--;
     }
 
+    int indexOf(T elem) {
+        for (int i = 0; i < m_length; i++) {
+            if (m_values[i] == elem)
+                return i;
+        }
+        return -1;
+    }
+
     int length() const {
         return m_length;
     }

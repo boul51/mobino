@@ -14,6 +14,7 @@ private slots:
     void testReadBackTenElems();
     void testRemoveAt();
     void testRemoveAll();
+    void testIndexOf();
 };
 
 void TestArray::testSizeIsZeroBeforeAppend()
@@ -83,6 +84,20 @@ void TestArray::testRemoveAll()
     }
 
     QVERIFY2(a.length() == 0, "Array is not empty");
+}
+
+void TestArray::testIndexOf()
+{
+    Array<int>a;
+
+    a.append(2);
+    a.append(3);
+    a.append(4);
+
+    QVERIFY2(a.indexOf(2) == 0,  "indexOf returned wrong value");
+    QVERIFY2(a.indexOf(3) == 1,  "indexOf returned wrong value");
+    QVERIFY2(a.indexOf(4) == 2,  "indexOf returned wrong value");
+    QVERIFY2(a.indexOf(0) == -1, "indexOf returned wrong value");
 }
 
 QTEST_MAIN(TestArray)

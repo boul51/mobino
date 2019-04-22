@@ -108,7 +108,7 @@ void TestActions::testInterpolateColor()
 
 void TestActions::testInterpolateMotorAngle()
 {
-    action::MotorAction m(0);
+    action::MotorAction m;
 
     m.startAngle = 60;
     m.endAngle = 80;

@@ -10,6 +10,11 @@ Track::Track(device::ILogicalDevice *logicalDevice):
 void Track::appendAction(action::IAction *action)
 {
     actions.append(action);
+
+    if (actions.length() > 2) {
+        delete actions.at(0);
+        actions.removeAt(0);
+    }
 }
 
 action::IAction *Track::activeActionAtTime(int64_t time)
@@ -44,7 +49,7 @@ action::IAction *Track::prevActiveActionAtTime(int64_t time)
     return nullptr;
 }
 
-void Track::playAtTime(int time)
+void Track::playAtTime(int64_t time)
 {
     action::IAction* activeAction = activeActionAtTime(time);
 

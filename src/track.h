@@ -18,7 +18,7 @@ public:
     void appendAction(action::IAction* action);
     action::IAction* activeActionAtTime(int64_t time);
     action::IAction* prevActiveActionAtTime(int64_t time);
-    void playAtTime(int time);
+    void playAtTime(int64_t time);
 
     device::ILogicalDevice* logicalDevice = nullptr;
     Array<action::IAction*> actions;

@@ -47,13 +47,12 @@ int main()
     device::DevicesManager devicesManager;
 
     // Add devices
-    devicesManager.addLogicalDevice(new device::LogicalLedDevice(6, 0));
-    devicesManager.addLogicalDevice(new device::LogicalLedDevice(6, 1));
+    for (int led = 0; led < 12; led++)
+        devicesManager.addLogicalDevice(new device::LogicalLedDevice(6, led));
+
     devicesManager.addLogicalDevice(new device::LogicalMotorDevice(10));
 
     devicesManager.initDevices();
-
-    devicesManager.updateOutputsFromDevices();
 
     show::SleepyShowManager showManager;
 

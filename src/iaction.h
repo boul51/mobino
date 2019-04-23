@@ -11,6 +11,7 @@ namespace action {
 
 class IAction {
 public:
+    virtual ~IAction() {}
     virtual void playAtTime(int64_t time) = 0;
     virtual void updateLogicalDevice(device::ILogicalDevice* logicalDevice) = 0;
     int64_t startTime = 0;

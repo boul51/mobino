@@ -4,6 +4,7 @@
 #include "motoraction.h"
 #include "track.h"
 #include "ilogicaldevice.h"
+#include "logicalleddevice.h"
 #include "devicetype.h"
 
 namespace show {
@@ -20,15 +21,18 @@ void show::SleepyShowManager::generateTracksActions(int64_t time)
               {
                 action::LedAction* prevLedAction = static_cast<action::LedAction*>(prevAction);
                 action::LedAction* newLedAction = new action::LedAction();
+                device::LogicalLedDevice* ledDevice = static_cast<device::LogicalLedDevice*>(track->logicalDevice);
                 if (prevLedAction)
                     newLedAction->startColor = prevLedAction->endColor;
                 else
-                    newLedAction->startColor = action::LedAction::RgbColor(0, 0, 0);
+                    newLedAction->startColor = ledDevice->ledIndex % 2 ?
+                                action::LedAction::RgbColor(0, 0, 0) :
+                                action::LedAction::RgbColor(100, 0, 100);
                 newLedAction->endColor = newLedAction->startColor.r == 0 ?
-                            action::LedAction::RgbColor(100, 0, 0):
+                            action::LedAction::RgbColor(100, 0, 100):
                             action::LedAction::RgbColor(0, 0, 0);
                 newLedAction->startTime = time;
-                newLedAction->duration = 100;
+                newLedAction->duration = 5000;
                 newAction = newLedAction;
                 break;
               }
@@ -39,10 +43,10 @@ void show::SleepyShowManager::generateTracksActions(int64_t time)
                 if (prevMotorAction)
                     newMotorAction->startAngle = prevMotorAction->endAngle;
                 else
-                    newMotorAction->startAngle = 45;
-                newMotorAction->endAngle = newMotorAction->startAngle == 45 ? 135 : 45;
+                    newMotorAction->startAngle = 10;
+                newMotorAction->endAngle = newMotorAction->startAngle == 10 ? 170: 10;
                 newMotorAction->startTime = time;
-                newMotorAction->duration = 10000;
+                newMotorAction->duration = 5000;
                 newAction = newMotorAction;
                 break;
               }

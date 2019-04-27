@@ -48,9 +48,9 @@ int main()
 
     // Add devices
     for (int led = 0; led < 12; led++)
-        devicesManager.addLogicalDevice(new device::LogicalLedDevice(6, led));
+        devicesManager.addLogicalDevice(new device::LogicalLedDevice(2, led));
 
-    devicesManager.addLogicalDevice(new device::LogicalMotorDevice(10));
+    devicesManager.addLogicalDevice(new device::LogicalMotorDevice(11));
 
     devicesManager.initDevices();
 

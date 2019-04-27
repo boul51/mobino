@@ -32,7 +32,7 @@ void show::SleepyShowManager::generateTracksActions(int64_t time)
                             action::LedAction::RgbColor(100, 0, 100):
                             action::LedAction::RgbColor(0, 0, 0);
                 newLedAction->startTime = time;
-                newLedAction->duration = 5000;
+                newLedAction->duration = 2000;
                 newAction = newLedAction;
                 break;
               }

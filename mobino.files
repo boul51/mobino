@@ -1,4 +1,7 @@
 src/Makefile
+src/funcs.cpp
+src/includes_arduino.h
+src/debug.h
 src/main.cpp
 src/iaction.h
 src/iaction.cpp

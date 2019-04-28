@@ -15,6 +15,7 @@ DEFINES += QT_DEPRECATED_WARNINGS PC_BUILD
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    ../src/funcs.cpp \
     ../src/devicesmanager.cpp \
     ../src/hardwaredevicefactory.cpp \
     ../src/hardwareleddevice.cpp \
@@ -30,8 +31,9 @@ SOURCES += \
     ../src/track.cpp \
 
 HEADERS += \
+    ../src/includes.h \
     ../src/array.h \
-    ../src/debugprint.h \
+    ../src/debug.h \
     ../src/devicesmanager.h \
     ../src/devicetype.h \
     ../src/hardwaredevicefactory.h \

@@ -18,16 +18,14 @@ MONITOR_CMD             = gtkterm
 MONITOR_BAUDRATE        = 115200
 ____________________________________________________________________________________*/
 
-
-#include <Arduino.h>
-
+#include "includes.h"
+#include "debug.h"
+#include "funcs.h"
 #include "array.h"
 #include "ledaction.h"
 #include "logicalleddevice.h"
 #include "logicalmotordevice.h"
-
 #include "devicesmanager.h"
-
 #include "sleepyshowmanager.h"
 
 /*
@@ -38,16 +36,17 @@ digitalWrite(LED_PIN, HIGH);
 
 int main()
 {
-    // Init arduino lib
-    init();
+    // Init arduino lib, no op on PC
+    initArduinoLib();
 
-    Serial.begin(115200);
-    Serial.println("Starting application");
+    initSerial();
+
+    logmsg("Starting application");
 
     device::DevicesManager devicesManager;
 
     // Add devices
-    for (int led = 0; led < 12; led++)
+    for (int led = 0; led < 11; led++)
         devicesManager.addLogicalDevice(new device::LogicalLedDevice(2, led));
 
     devicesManager.addLogicalDevice(new device::LogicalMotorDevice(11));
@@ -59,11 +58,12 @@ int main()
     showManager.createTracksForDevices(devicesManager.logicalDevices());
 
     while (true) {
-        int64_t time = (int64_t)millis();
+        uint32_t time = getMillis();
+        logmsg("In loop, time %" PRIu32"\n", time);
         showManager.generateTracksActions(time);
         showManager.playAtTime(time);
         devicesManager.updateOutputsFromDevices();
     }
 
-    Serial.flush();
+    flushSerial();
 }

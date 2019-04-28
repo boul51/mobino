@@ -3,7 +3,7 @@
 
 namespace show {
 
-void IShowManager::playAtTime(int64_t time)
+void IShowManager::playAtTime(uint32_t time)
 {
     for (int i = 0; i < tracks.length(); i++) {
         tracks.at(i)->playAtTime(time);

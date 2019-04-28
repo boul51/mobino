@@ -7,7 +7,7 @@ namespace show {
 
 class SleepyShowManager: public IShowManager {
 public:
-    void generateTracksActions(int64_t time) override;
+    void generateTracksActions(uint32_t time) override;
 };
 
 } // namespace show

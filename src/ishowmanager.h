@@ -15,9 +15,9 @@ class Track;
 
 class IShowManager {
 public:
-    void playAtTime(int64_t time);
+    void playAtTime(uint32_t time);
     void createTracksForDevices(Array<device::ILogicalDevice *> &devices);
-    virtual void generateTracksActions(int64_t time) = 0;
+    virtual void generateTracksActions(uint32_t time) = 0;
 
     Array<Track*> tracks;
 };

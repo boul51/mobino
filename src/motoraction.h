@@ -7,7 +7,7 @@ namespace action {
 
 class MotorAction: public action::IAction {
 public:
-    void playAtTime(int64_t time);
+    void playAtTime(uint32_t time);
     void updateLogicalDevice(device::ILogicalDevice *logicalDevice) override;
 
     uint8_t startAngle = 90;

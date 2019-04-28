@@ -1,7 +1,7 @@
 #include "ledaction.h"
 #include "logicalleddevice.h"
 
-void action::LedAction::playAtTime(int64_t time)
+void action::LedAction::playAtTime(uint32_t time)
 {
     currentColor.r = interpolateValue<uint8_t>(startColor.r, endColor.r, startTime, duration, time);
     currentColor.g = interpolateValue<uint8_t>(startColor.g, endColor.g, startTime, duration, time);

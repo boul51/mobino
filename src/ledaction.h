@@ -7,7 +7,7 @@ namespace action {
 
 class LedAction: public IAction {
 public:
-    void playAtTime(int64_t time);
+    void playAtTime(uint32_t time);
     void updateLogicalDevice(device::ILogicalDevice *logicalDevice) override;
 
     struct RgbColor {

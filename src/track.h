@@ -16,9 +16,9 @@ class Track {
 public:
     Track(device::ILogicalDevice* logicalDevice);
     void appendAction(action::IAction* action);
-    action::IAction* activeActionAtTime(int64_t time);
-    action::IAction* prevActiveActionAtTime(int64_t time);
-    void playAtTime(int64_t time);
+    action::IAction* activeActionAtTime(uint32_t time);
+    action::IAction* prevActiveActionAtTime(uint32_t time);
+    void playAtTime(uint32_t time);
 
     device::ILogicalDevice* logicalDevice = nullptr;
     Array<action::IAction*> actions;

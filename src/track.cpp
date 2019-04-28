@@ -17,7 +17,7 @@ void Track::appendAction(action::IAction *action)
     }
 }
 
-action::IAction *Track::activeActionAtTime(int64_t time)
+action::IAction *Track::activeActionAtTime(uint32_t time)
 {
     action::IAction* activeAction = nullptr;
 
@@ -32,7 +32,7 @@ action::IAction *Track::activeActionAtTime(int64_t time)
     return activeAction;
 }
 
-action::IAction *Track::prevActiveActionAtTime(int64_t time)
+action::IAction *Track::prevActiveActionAtTime(uint32_t time)
 {
     action::IAction* activeAction = activeActionAtTime(time);
     if (activeAction) {
@@ -49,7 +49,7 @@ action::IAction *Track::prevActiveActionAtTime(int64_t time)
     return nullptr;
 }
 
-void Track::playAtTime(int64_t time)
+void Track::playAtTime(uint32_t time)
 {
     action::IAction* activeAction = activeActionAtTime(time);
 

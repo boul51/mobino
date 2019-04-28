@@ -9,7 +9,7 @@
 
 namespace show {
 
-void show::SleepyShowManager::generateTracksActions(int64_t time)
+void show::SleepyShowManager::generateTracksActions(uint32_t time)
 {
     for (int i = 0; i < tracks.length(); i++) {
         show::Track* track = tracks.at(i);

@@ -34,6 +34,9 @@ pinMode(LED_PIN, OUTPUT);
 digitalWrite(LED_PIN, HIGH);
 */
 
+#define NEOPIXEL_PIN 2
+#define MOTOR_PWM_PIN 11
+
 int main()
 {
     // Init arduino lib, no op on PC
@@ -47,9 +50,9 @@ int main()
 
     // Add devices
     for (int led = 0; led < 11; led++)
-        devicesManager.addLogicalDevice(new device::LogicalLedDevice(2, led));
+        devicesManager.addLogicalDevice(new device::LogicalLedDevice(NEOPIXEL_PIN, led));
 
-    devicesManager.addLogicalDevice(new device::LogicalMotorDevice(11));
+    devicesManager.addLogicalDevice(new device::LogicalMotorDevice(MOTOR_PWM_PIN));
 
     devicesManager.initDevices();
 

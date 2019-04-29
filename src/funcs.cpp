@@ -1,6 +1,7 @@
 #include "funcs.h"
 
 #include <stdio.h>
+#include <unistd.h>
 
 #include "includes.h"
 

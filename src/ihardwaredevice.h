@@ -21,7 +21,9 @@ public:
         deviceType(deviceType),
         deviceId(deviceId)
     {
+#ifdef PC_BUILD
         createOutputFile();
+#endif
     }
 
     void appendLogicalDevice(ILogicalDevice* logicalDevice)

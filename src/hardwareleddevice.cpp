@@ -21,21 +21,36 @@ void HardwareLedDevice::initDevice()
 #endif
 }
 
+#ifndef PC_BUILD
+
 void HardwareLedDevice::updateOutput()
 {
     for (int i = 0; i < m_logicalDevices.length(); i++) {
         LogicalLedDevice* logicalLedDevice = static_cast<LogicalLedDevice*>(m_logicalDevices.at(i));
-#ifndef PC_BUILD
         m_strip->setPixelColor(logicalLedDevice->ledIndex, logicalLedDevice->redValue, logicalLedDevice->greenValue, logicalLedDevice->blueValue);
-#else
-        fprintf(stdout, "Setting pixel color, dev id %d, pixel %d, r %d, g %d, b %d\n", logicalLedDevice->deviceId, logicalLedDevice->ledIndex,
-                logicalLedDevice->redValue, logicalLedDevice->greenValue, logicalLedDevice->blueValue);
-#endif
     }
 
-#ifndef PC_BUILD
     m_strip->show();
-#endif
 }
+
+#else
+
+void HardwareLedDevice::updateOutput()
+{
+    QString s;
+
+    for (int i = 0; i < m_logicalDevices.length(); i++) {
+        LogicalLedDevice* logicalLedDevice = static_cast<LogicalLedDevice*>(m_logicalDevices.at(i));
+        s.append(QString().sprintf("%d %d %d %d %d\n",
+                                   logicalLedDevice->position.x, logicalLedDevice->position.y,
+                                   logicalLedDevice->redValue, logicalLedDevice->greenValue, logicalLedDevice->blueValue));
+    }
+
+    m_outputFile.seek(0);
+    m_outputFile.write(s.toLatin1());
+    m_outputFile.flush();
+}
+
+#endif
 
 } // namespace device

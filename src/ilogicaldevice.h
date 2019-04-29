@@ -3,6 +3,8 @@
 
 #include "devicetype.h"
 
+#include <stdint.h>
+
 namespace device {
 
 class ILogicalDevice {
@@ -14,6 +16,13 @@ public:
 
     int deviceId = -1;
     DeviceType deviceType = DeviceType::Invalid;
+
+    struct Position {
+        int8_t x = 0;
+        int8_t y = 0;
+    };
+
+    Position position;
 };
 
 } // namespace device

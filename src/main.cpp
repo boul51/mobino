@@ -62,7 +62,6 @@ int main()
 
     while (true) {
         uint32_t time = getMillis();
-        logmsg("In loop, time %" PRIu32"\n", time);
         showManager.generateTracksActions(time);
         showManager.playAtTime(time);
         devicesManager.updateOutputsFromDevices();

@@ -22,15 +22,24 @@ void show::SleepyShowManager::generateTracksActions(uint32_t time)
                 action::LedAction* prevLedAction = static_cast<action::LedAction*>(prevAction);
                 action::LedAction* newLedAction = new action::LedAction();
                 device::LogicalLedDevice* ledDevice = static_cast<device::LogicalLedDevice*>(track->logicalDevice);
-                if (prevLedAction)
+
+                action::LedAction::RgbColor startColor = ledDevice->ledIndex % 2 ?
+                            action::LedAction::RgbColor{0, 255, 255} :
+                            action::LedAction::RgbColor{0, 0, 0};
+
+                action::LedAction::RgbColor endColor = ledDevice->ledIndex % 2 ?
+                            action::LedAction::RgbColor{0, 0, 0} :
+                            action::LedAction::RgbColor{255, 0, 255};
+
+                if (!prevLedAction) {
+                    newLedAction->startColor = startColor;
+                    newLedAction->endColor = endColor;
+                }
+                else {
                     newLedAction->startColor = prevLedAction->endColor;
-                else
-                    newLedAction->startColor = ledDevice->ledIndex % 2 ?
-                                action::LedAction::RgbColor(0, 0, 0) :
-                                action::LedAction::RgbColor(100, 0, 100);
-                newLedAction->endColor = newLedAction->startColor.r == 0 ?
-                            action::LedAction::RgbColor(100, 0, 100):
-                            action::LedAction::RgbColor(0, 0, 0);
+                    newLedAction->endColor = prevLedAction->startColor;
+                }
+
                 newLedAction->startTime = time;
                 newLedAction->duration = 2000;
                 newAction = newLedAction;

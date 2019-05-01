@@ -18,8 +18,8 @@ public:
     DeviceType deviceType = DeviceType::Invalid;
 
     struct Position {
-        int8_t x = 0;
-        int8_t y = 0;
+        uint8_t x = 0;
+        uint8_t y = 0;
     };
 
     Position position;

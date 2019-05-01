@@ -49,8 +49,15 @@ int main()
     device::DevicesManager devicesManager;
 
     // Add devices
-    for (int led = 0; led < 11; led++)
-        devicesManager.addLogicalDevice(new device::LogicalLedDevice(NEOPIXEL_PIN, led));
+    for (int led = 0; led < 11; led++) {
+        auto ledDevice = new device::LogicalLedDevice(NEOPIXEL_PIN, led);
+        int ledsPerLine = 11;
+        int line = led / ledsPerLine;
+        int col = led % ledsPerLine;
+        ledDevice->position.x = (col + 1) * 20;
+        ledDevice->position.y = (line + 1) * 20;
+        devicesManager.addLogicalDevice(ledDevice);
+    }
 
     devicesManager.addLogicalDevice(new device::LogicalMotorDevice(MOTOR_PWM_PIN));
 

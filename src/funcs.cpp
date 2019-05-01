@@ -57,7 +57,7 @@ void flushSerial()
 
 uint32_t getMillis()
 {
-    constexpr int sleepTimeMs = 100;
+    constexpr int sleepTimeMs = 10;
     static int loops = 0;
 
     if (loops > 0)

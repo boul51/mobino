@@ -3,6 +3,7 @@
 
 #include "devicetype.h"
 #include "array.h"
+#include "ilogicaldevice.h"
 
 #ifdef PC_BUILD
 #include <QFile>
@@ -12,8 +13,6 @@
 
 
 namespace device {
-
-class ILogicalDevice;
 
 class IHardwareDevice {
 public:
@@ -40,6 +39,18 @@ public:
             return false;
         }
         return true;
+    }
+
+    void writeTypeAndPositions(const QString& type) {
+        QString s = type + " ";
+        for (int i = 0; i < m_logicalDevices.length(); i++) {
+            ILogicalDevice* logicalDevice = m_logicalDevices.at(i);
+            s += QString().sprintf("%d %d ", logicalDevice->position.x, logicalDevice->position.y);
+        }
+        s += "\n";
+        m_outputFile.seek(0);
+        m_outputFile.resize(0);
+        m_outputFile.write(s.toLatin1());
     }
 #endif
 

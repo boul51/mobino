@@ -31,13 +31,12 @@ void HardwareMotorDevice::initDevice()
 void HardwareMotorDevice::updateOutput()
 {
     QString s;
+
     LogicalMotorDevice* logicalMotorDevice = static_cast<LogicalMotorDevice*>(m_logicalDevices.at(0));
 
-    s.sprintf("%d %d %d\n",
-              logicalMotorDevice->position.x, logicalMotorDevice->position.y,
-              logicalMotorDevice->angle);
+    s.sprintf("%d\n", logicalMotorDevice->angle);
 
-    m_outputFile.seek(0);
+    writeTypeAndPositions("Motor");
     m_outputFile.write(s.toLatin1());
     m_outputFile.flush();
 }

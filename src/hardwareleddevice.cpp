@@ -41,12 +41,10 @@ void HardwareLedDevice::updateOutput()
 
     for (int i = 0; i < m_logicalDevices.length(); i++) {
         LogicalLedDevice* logicalLedDevice = static_cast<LogicalLedDevice*>(m_logicalDevices.at(i));
-        s.append(QString().sprintf("%d %d %d %d %d\n",
-                                   logicalLedDevice->position.x, logicalLedDevice->position.y,
-                                   logicalLedDevice->redValue, logicalLedDevice->greenValue, logicalLedDevice->blueValue));
+        s.append(QString().sprintf("%d %d %d\n", logicalLedDevice->redValue, logicalLedDevice->greenValue, logicalLedDevice->blueValue));
     }
 
-    m_outputFile.seek(0);
+    writeTypeAndPositions("Led");
     m_outputFile.write(s.toLatin1());
     m_outputFile.flush();
 }
